@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import {useDispatch} from 'react-redux'
 import { editDesc } from '../Redux/Actions/actions';
+import { FiEdit } from "react-icons/fi";
 
 
 const EditTask=({todo})=> {
@@ -19,9 +20,7 @@ const EditTask=({todo})=> {
   }
   return (
     <>
-      <button onClick={handleShow}>
-        Edit
-      </button>
+      <FiEdit className='edit' onClick={handleShow}/>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

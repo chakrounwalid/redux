@@ -9,13 +9,16 @@ import {useSelector} from 'react-redux'
 
 const ListTask = () => {
     
-    const [search,setSearch]=useState(false)
-    const handleSearch =()=> setSearch(!search);
+    const [search,setSearch]=useState("ALL")
+    const handleAll =()=> setSearch("ALL")
+    const handleDone =()=> setSearch("DONE");
+    const handleUndone =()=> setSearch("UNDONE");
     const todos = useSelector((state)=>state);
     return(
         <div>
-            <AddTodo handleSearch={handleSearch} search={search}/>
-            <Task todos={search ? todos.filter((e)=>e.etat):todos }/>
+            <AddTodo handleAll={handleAll} handleDone={handleDone} handleUndone={handleUndone}/>
+            <Task todos={search === "ALL"? todos: search === "DONE" ? 
+            todos.filter((e)=>e.etat):todos.filter((e)=>!e.etat) }/>
         </div>
     )
 }
